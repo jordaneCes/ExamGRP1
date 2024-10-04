@@ -26,15 +26,14 @@ jobs:
       - name: Push Docker image to Harbor
         run: docker push harbor.kakor.ovh/ipi/groupe1:v1
 
-  verify_trivy:
-    runs-on: ubuntu-latest
-    continue-on-error: true
-
-    steps:
-      #On installe Trivy
       - name: Install Trivy
-        run: sudo apt-get update | sudo apt-get install -y wget | wget https://github.com/aquasecurity/trivy/releases/download/v0.31.3/trivy_0.31.3_Linux-64bit.deb | sudo dpkg -i trivy_0.31.3_Linux-64bit.deb
+        run: |
+        sudo apt-get update
+        sudo apt-get install -y wget
+        wget https://github.com/aquasecurity/trivy/releases/download/v0.40.0/trivy_0.40.0_Linux-64bit.deb
+        sudo dpkg -i trivy_0.40.0_Linux-64bit.deb
 
-      #On fait le scan
-      - name: Scan avec Titi
-        run: trivy image harbor.kakor.ovh/ipi/groupe1:v1
+      - name: Scan Docker image with Trivy
+        id: scan-image
+        run: |
+        trivy image — format json — output scan-results.json harbor.kakor.ovh/ipi/groupe1:v1
