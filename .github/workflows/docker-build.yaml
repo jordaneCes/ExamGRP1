@@ -14,3 +14,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Étape 2: Connexion au Harbor Registry
+      - name: Log in to Harbor
+        run: echo "B4teau123!" | docker login harbor.kakor.ovh --username "ipi" --password-stdin
+
+      # Étape 3:  Construction de l'image Docker
+      - name: Build Docker image
+        run: docker build -f ../../Dockerfile -t harbor.kakor.ovh/ipi/groupe1:v1 ../..
+
+      # Étape 4: Pousser l'image dans le registry
+      - name: Push Docker image to Harbor
+        run: docker push harbor.kakor.ovh/ipi/groupe1:v1
