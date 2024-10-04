@@ -1,0 +1,16 @@
+name: Build and Push Docker Image to Harbor
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Étape 1: Checkout du dépôt Git
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
