@@ -36,3 +36,11 @@ jobs:
           vuln-type: 'os,library'
           severity: 'MEDIUM'
         continue-on-error: true
+
+      - name: Log in to OpenShift
+        uses: redhat-actions/oc-login@v1
+        with:
+          openshift_server_url: https://api.openshift.kakor.ovh:6443
+          openshift_token: sha256~Uar1QektwyCEHJZgst7yvfl48XSWPDNzUx5Of7L1GFk
+          insecure_skip_tls_verify: true
+          namespace: projet-gp-1
