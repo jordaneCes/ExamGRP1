@@ -32,7 +32,7 @@ jobs:
     steps:
       #On installe Trivy
       - name: Install Trivy
-        run:|
+        run: |
         sudo apt-get update
         sudo apt-get install -y wget
         wget https://github.com/aquasecurity/trivy/releases/download/v0.31.3/trivy_0.31.3_Linux-64bit.deb
