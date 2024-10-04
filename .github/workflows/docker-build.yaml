@@ -25,3 +25,23 @@ jobs:
       # Étape 4: Pousser l'image dans le registry
       - name: Push Docker image to Harbor
         run: docker push harbor.kakor.ovh/ipi/groupe1:v1
+
+  verify_trivy:
+    runs-on: ubuntu-latest
+
+    steps:
+      #On installe Trivy
+      - name: Install Trivy
+        run:|
+        sudo apt-get update
+        sudo apt-get install -y wget
+        wget https://github.com/aquasecurity/trivy/releases/download/v0.31.3/trivy_0.31.3_Linux-64bit.deb
+        sudo dpkg -i trivy_0.31.3_Linux-64bit.deb
+
+      #On fait le scan
+      - name: Scan avec Titi
+        run: trivy image harbor.kakor.ovh/ipi/groupe1:v1
+
+      # On continue meme si ca fail
+      - name: Continue even on failure
+        continue-on-error: true
