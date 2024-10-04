@@ -44,3 +44,6 @@ jobs:
           openshift_token: sha256~Uar1QektwyCEHJZgst7yvfl48XSWPDNzUx5Of7L1GFk
           insecure_skip_tls_verify: true
           namespace: projet-gp-1
+
+      - name: Deploy appli
+        run: oc apply -f kubernetes-manifests/ -n projet-gp-1
