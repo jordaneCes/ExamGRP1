@@ -55,5 +55,5 @@ jobs:
           oc get routes -n projet-gp-1
 
       - name: Vérification que l'application fonctionne
-        run: curl https://python-gp-1.apps.openshift.kakor.ovh/livres
+        run: curl -k https://python-gp-1.apps.openshift.kakor.ovh/livres
         continue-on-error: true
