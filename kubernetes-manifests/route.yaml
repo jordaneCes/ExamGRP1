@@ -4,9 +4,9 @@ kind: Route
 metadata:
   creationTimestamp: null
   name: bookstack
-  namespace: projet-gp-<x>
+  namespace: projet-gp-1
 spec:
-  host: python-gp-<x>.apps.openshift.kakor.ovh
+  host: python-gp-1.apps.openshift.kakor.ovh
   tls:
     insecureEdgeTerminationPolicy: Redirect
     termination: edge
