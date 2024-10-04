@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: harbor.kakor.ovh/ipi/groupe1:tag
+        image: harbor.kakor.ovh/ipi/groupe1:v1
         ports:
         - containerPort: 5000
