@@ -20,7 +20,7 @@ jobs:
 
       # Étape 3:  Construction de l'image Docker
       - name: Build Docker image
-        run: docker build -f ../../Dockerfile -t harbor.kakor.ovh/ipi/groupe1:v1 ../..
+        run: docker build -f Dockerfile -t harbor.kakor.ovh/ipi/groupe1:v1 .
 
       # Étape 4: Pousser l'image dans le registry
       - name: Push Docker image to Harbor
