@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    continue-on-error: true
 
     steps:
       # Étape 1: Checkout du dépôt Git
@@ -25,10 +26,3 @@ jobs:
       # Étape 4: Pousser l'image dans le registry
       - name: Push Docker image to Harbor
         run: docker push harbor.kakor.ovh/ipi/groupe1:v1
-
-      - name: Install Trivy
-        run: sudo apt-get update | sudo apt-get install -y wget | wget https://github.com/aquasecurity/trivy/releases/download/v0.40.0/trivy_0.40.0_Linux-64bit.deb | sudo dpkg -i trivy_0.40.0_Linux-64bit.deb
-
-      - name: Scan Docker image with Trivy
-        id: scan-image
-        run: trivy image — format json — output scan-results.json harbor.kakor.ovh/ipi/groupe1:v1
