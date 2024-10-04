@@ -47,3 +47,9 @@ jobs:
 
       - name: Deploy appli
         run: oc apply -f kubernetes-manifests/ -n projet-gp-1
+
+      - name: Vérification
+        run: |
+          oc get deploy -n projet-gp-1 
+          oc get services -n projet-gp-1
+          oc get routes -n projet-gp-1
